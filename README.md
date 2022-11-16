@@ -76,3 +76,6 @@ docker exec -it container-name ash
 docker-compose stop/start
 docker-compose down #(delete all runningcontainers,network & volumes)
 ```
+
+*Feedback is appreciated.!
+If you have any questions,don’t hesitate to reach out to me*
