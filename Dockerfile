@@ -58,7 +58,7 @@ RUN set -x ; \
 
 # Add application
 
-COPY laravel/* /var/www/html/
+COPY laravel/ /var/www/html/
 
 # Install composer packages 
 RUN composer install
