@@ -1,5 +1,6 @@
 FROM alpine:3.16
-
+LABEL maintainer="nyinyisoepaing1997@gmail.com"
+ENV COMPOSER_ALLOW_SUPERUSER=1
 # Setup document root
 WORKDIR /var/www/html
 
@@ -47,17 +48,13 @@ COPY docker-config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 # # Switch to use root user from here on
 USER root
+
 # set www-data group (82 is the standard uid/gid for www-data in Alpine)
-
 RUN set -x ; \
-
-  addgroup -g 82 -S www-data ; \
-
-  adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
-
+	addgroup -g 82 -S www-data ; \
+	adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
 
 # Add application
-
 COPY laravel/ /var/www/html/
 
 # Install composer packages 
