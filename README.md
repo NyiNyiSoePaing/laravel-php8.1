@@ -45,13 +45,21 @@ vi laravel/.env
 * *Note*  -  *DB_HOST is database service name from docker-compose.yml*
 
 
+### Build and Run docker containers
 ```bash
-# Build and Run docker containers
- docker-compose up -d
- # or 
- docker-compose up --build --force-recreate -d #(recreate container)
+bash run.sh
 ```
+### ( or ) Manual Build and Run docker containers 
+```bash
+docker-compose up -d
+# or 
+docker-compose up --build --force-recreate -d #(recreate container)
 
+
+docker exec -it laravel-app php artisan key:generate # Generate Application Key
+docker exec -it laravel-app composer install # install composer
+docker exec -it laravel-app chown -R www-data:www-data storage
+```
 *Containers created and their ports are as follows:*
 
 
